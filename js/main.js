@@ -1,10 +1,42 @@
 // PARTE LÓGICA
 
+// funcion clase protootipo molde
+function Chat(_name, _imageURL, _lastName, _timeLast) {
+    this.name = _name;
+    this.imageURL = _imageURL;
+    this.lastMessage = _lastName;
+    this.timeLastMessage = _timeLast;
+}
 
+var listChats = [
+    //creacion de instancias de la clase Chat
+    new Chat("Laboratoria Perú","image/logocodeacademy.png"),
+    new Chat("Raymi Saldomando","image/raymi.jpg"),
+    new Chat("Mariana Costa","image/mariana.jpg"),
+    new Chat("Ana María Martinez Franklin","image/anamaria.jpg"),
+    new Chat("Rodulfo Prieto","image/rodulfo.jpg"),
+    new Chat("Andrea Lamas","image/andrea.jpg"),
+    new Chat("Maria Paula Rivarola","image/mariapaula.jpg"),
+    new Chat("Katy Sanchez","image/katy.jpg"),
+    new Chat("Aldo Alfaro","image/aldo.jpg"),
+    new Chat("Laboratoria Curricula","image/curricula.jpg"),
+    new Chat("Jose L. Lee Rázuri","image/jose.jpg")
+    /*{name:"Chat 1", 
+     imageURL:"image/logocodeacademy.png", 
+     lastMessage:"", 
+     timeLastMessage:"" }*/
+];
 
+function Message (_nombre, _color, _hora, _mensaje) {
+    this.nombre = _nombre;
+    this.color = _color;
+    this.hora = _hora;
+    this.mensaje = _mensaje;
+}
 
-
-
+var messageChat = [
+    new Message("Raymi", "red", "", "oli")
+];
 
 
 
@@ -12,13 +44,31 @@
 
 var liListItem = null;
 
-//para inicializar cosas en la app
 //cuando carge la pagina se ASIGNA LOS EVENTOS ONCLICK
 function init() {
     
-    setEventsChatList();
+    initChatList();
 }
 
+//inicializar la lista de chats
+function initChatList() {
+    var d = new Date();
+    // elemento ul
+    var elListaChats = document.getElementById("lista-chats");
+    
+    for (var i in listChats){
+        var htmlChatItem = 
+            '<li><div class="avatar">'+
+                '<img src="'+ listChats[i].imageURL +'" alt="" class="wh-44">'+
+                '<h4 class="w-contact-name">'+ listChats[i].name +'</h4>'+
+                '<p class="w-last-message" id="mensaje">'+ listChats[i].lastMessage +'</p>'+
+            '</div>'+
+            '<div class="time" id="hora">'+ listChats[i].timeLastMessage +'</div></li>';
+        
+        elListaChats.innerHTML += htmlChatItem;
+    }
+    setEventsChatList();
+}
 
 // caracteristica o funcion de la lista de chat obtener referencia de la lista chats
 function setEventsChatList() {
@@ -44,7 +94,7 @@ function onChatItemClick(evt) {
     var contactName = evt.currentTarget.getElementsByClassName("w-contact-name")[0].textContent;
     var imgURL = evt.currentTarget.getElementsByClassName("wh-44")[0].src;
     
-    actualizarHeaderChat(contactName, imgURL);
+    actualizarHeaderChat(contactName, imgURL, "conectado");
 }
 
 function onSendMessage(evt) {
@@ -105,6 +155,7 @@ function crearListaChats() {
     
 }
 
+
 function crearChat(_message, _time) {
     var d = new Date();
     // elemento ul
@@ -130,6 +181,8 @@ function crearChat(_message, _time) {
     
     //elListaChats.innerHTML += htmlChatItem;
 }
+
+
 function actualizarHeaderChat(_contactName, _imageURL, _estado) {
     var chatHeader = document.getElementById("chat-header");
     chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML = _contactName;
