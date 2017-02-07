@@ -9,7 +9,43 @@
 
 
 // PARTE VISUAL
+
 var liListItem = null;
+
+//para inicializar cosas en la app
+//cuando carge la pagina se ASIGNA LOS EVENTOS ONCLICK
+function init() {
+    
+    setEventsChatList();
+}
+
+
+// caracteristica o funcion de la lista de chat obtener referencia de la lista chats
+function setEventsChatList() {
+    // se referencia al ul de la izquierda
+    var listaChats = document.getElementById("lista-chats");
+    // la variable contiene un OBJETO
+    var arrListItems = listaChats.getElementsByTagName("li");
+    for(var i=0; i<arrListItems.length; i++){
+        /*arrListItems[i].onclick = function (){
+            alert("click");
+        }
+        arrListItems[i].addEventListener("click", function(){
+            alert("click listener");
+        });*/
+        arrListItems[i].addEventListener("click",onChatItemClick);
+        
+    }
+}
+
+function onChatItemClick(evt) {
+    //console.log(evt.currentTarget);
+    var li = evt.currentTarget;
+    var contactName = evt.currentTarget.getElementsByClassName("w-contact-name")[0].textContent;
+    var imgURL = evt.currentTarget.getElementsByClassName("wh-44")[0].src;
+    
+    actualizarHeaderChat(contactName, imgURL);
+}
 
 function onSendMessage(evt) {
     
@@ -53,6 +89,8 @@ function crearMensaje(_message, _time) {
     
     // elemento p del ul lista-chats de la izquierda
     var mensaje = liListItem.getElementsByClassName("w-last-message")[0];
+    mensaje.innerHTML = _message;
+    
     
     
     // almacenando un elemento
@@ -60,7 +98,8 @@ function crearMensaje(_message, _time) {
     elChat.innerHTML += htmlMensajeOut;
     
     // esta sentencia va luego del innerHTML
-    elDivChat.scrollTop = elDivChat.scrollHeight;
+    elChat.scrollTop = elChat.scrollHeight;
+    
 }
 function crearListaChats() {
     
@@ -72,21 +111,30 @@ function crearChat(_message, _time) {
     var elListaChats = document.getElementById("lista-chats");
     
     if(liListItem == null){
-    var liListItem = document.createElement("li");
-    var htmlChatItem = 
-            '<div class="avatar">'+
-                '<img src="image/logocodeacademy.png" alt="" class="wh-44">'+
-                '<h4 class="w-contact-name">Laboratoria Perú</h4>'+
-                '<p class="w-last-message" id="mensaje">'+ _message +'</p>'+
-            '</div>'+
-            '<div class="time" id="hora">'+ _time +'</div>';
-    liListItem.innerHTML =htmlChatItem;
-    // si no se especifica el nodo inicial se manda al final
-    elListaChats.insertBefore(liListItem, elListaChats.childNodes[0]);
+        liListItem = document.createElement("li");
+        var htmlChatItem = 
+                '<div class="avatar">'+
+                    '<img src="image/logocodeacademy.png" alt="" class="wh-44">'+
+                    '<h4 class="w-contact-name">Laboratoria Perú</h4>'+
+                    '<p class="w-last-message" id="mensaje">'+ _message +'</p>'+
+                '</div>'+
+                '<div class="time" id="hora">'+ _time +'</div>';
+        
+        liListItem.innerHTML =htmlChatItem;
+        // si no se especifica el nodo inicial se manda al final
+        elListaChats.insertBefore(liListItem, elListaChats.childNodes[0]);
     }
+    
+    //creo un chat nuevo y actualizo la lista de chats
+    setEventsChatList();
+    
     //elListaChats.innerHTML += htmlChatItem;
 }
-function actualizarHeaderChat() {
+function actualizarHeaderChat(_contactName, _imageURL, _estado) {
+    var chatHeader = document.getElementById("chat-header");
+    chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML = _contactName;
+    chatHeader.getElementsByClassName('w-users-messages')[0].innerHTML = _estado;
+    chatHeader.getElementsByTagName('img')[0].src = _imageURL;
     
 }
 
