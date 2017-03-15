@@ -9,14 +9,13 @@ function Chat(_name, _imageURL, _lastMessage, _timeLast) {
 }
 
 var listChats = [
-    //creacion de instancias de la clase Chat
     new Chat("Laboratoria Perú","image/logocodeacademy.png","Hola Fabi!!"),
     new Chat("Raymi Saldomando","image/raymi.jpg","Hola Fabi!!"),
     new Chat("Mariana Costa","image/mariana.jpg", "Hola Fabi!!"),
     new Chat("Ana María Martinez Franklin","image/anamaria.jpg", "Hola Fabi!!"),
     new Chat("Rodulfo Prieto","image/rodulfo.jpg", "Hola Fabi!!"),
     new Chat("Andrea Lamas","image/andrea.jpg", "Hola Fabi!!"),
-    new Chat("Maria Paula Rivarola","image/mariapaula.jpg", "Hola Fabi!!"),
+    new Chat("Maria Paula Rivarola","image/mariapaula.jpg", "Hello Fabi!!"),
     new Chat("Katy Sanchez","image/katy.jpg", "Hola Fabi!!"),
     new Chat("Aldo Alfaro","image/aldo.jpg", "Hola Fabi!!"),
     new Chat("Laboratoria Curricula","image/curricula.jpg", "Hola Fabi!!"),
@@ -27,22 +26,7 @@ var listChats = [
      timeLastMessage:"" }*/
 ];
 
-function Message (_nombre, _color, _hora, _mensaje) {
-    this.nombre = _nombre;
-    this.color = _color;
-    this.hora = _hora;
-    this.mensaje = _mensaje;
-}
-
-var messageChat = [
-    new Message("Raymi", "red", "", "oli")
-];
-
-
-
 // PARTE VISUAL
-
-var liListItem = null;
 
 //cuando carge la pagina se ASIGNA LOS EVENTOS ONCLICK
 function init() {
@@ -52,7 +36,6 @@ function init() {
 
 //inicializar la lista de chats
 function initChatList() {
-    var d = new Date();
     // elemento ul
     var elListaChats = document.getElementById("lista-chats");
     
@@ -98,7 +81,7 @@ function onChatItemClick(evt) {
     
     actualizarHeaderChat(contactName, imgURL, "conectado");
     actualizarChatMensajes(contactName);
-    onSendMessage(evt);
+    //onSendMessage(evt);
 }
 
 function actualizarHeaderChat(_contactName, _imageURL, _estado) {
@@ -122,8 +105,13 @@ function actualizarChatMensajes(_contactName) {
             '</div>';
         var elChat = document.getElementById("chat");
         elChat.innerHTML = htmlMensajeIn;
+        
     }
 }
+
+var almacenMensajes = [];
+
+// ----------------------------------- FUNCION PRINCIPAL
 
 function onSendMessage(evt) {
     
@@ -139,11 +127,13 @@ function onSendMessage(evt) {
         crearChat(outMessage.value, time);
         crearMensaje(outMessage.value, time);
         
+        almacenMensajes.push({mensajin:outMessage.value, tiempin:time});
+        
         outMessage.value = "";
     }
 }
 
-// BUSCAR CONTACTOS
+// ----------------------------------- BUSCAR CONTACTOS
 
 var search = document.getElementById("search");
 var ulListaChats = document.getElementById("lista-chats");
@@ -194,18 +184,11 @@ function crearMensaje(_message, _time) {
     elChat.innerHTML += htmlMensajeOut;
     
     // esta sentencia va luego del innerHTML
-    elChat.scrollTop = elChat.scrollHeight;  
+    elChat.scrollTop = elChat.scrollHeight;
 }
 
-var almacenMensajes = [];
-
-function crearListaChats() {
-    
-}
-
-
+var liListItem = null;
 function crearChat(_message, _time) {
-    var d = new Date();
     // elemento ul
     var elListaChats = document.getElementById("lista-chats");
     
@@ -226,10 +209,8 @@ function crearChat(_message, _time) {
     
     //creo un chat nuevo y actualizo la lista de chats
     setEventsChatList();
-    
     //elListaChats.innerHTML += htmlChatItem;
 }
-
 
 //this.onkeyup(event){ mostrarMensaje(this) }
 

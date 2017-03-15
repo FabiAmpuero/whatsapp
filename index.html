@@ -13,7 +13,23 @@
 	  	<link href="css/main.css" rel="stylesheet">
 	  	<link href="css/queries.css" rel="stylesheet">
 	</head>
-	<body onload="init()">
+	<body>
+        <input type="text" id="name">
+        <button id="btn-ingresar">Ingresar</button>
+        
+        <!--
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul id="lista-chats"></ul>
+                </div>
+                <div class="col-md-8">
+                    <ul id="lista-mensajes"></ul>
+                </div>
+            </div>
+        </div>-->
+        
+        
 	  	<div class="w-app">
 	  		<div class="container">
 	  			<aside class="col-md-4 w-contacts">
@@ -39,78 +55,6 @@
 		  					</div>
 							<div class="time" id="hora">14:27</div>
 	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/raymi.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Raymi Saldomando</h4>
-	  							<p class="w-last-message">La clase va bien!</p>
-	  						</div>
-	  						<div class="time">11:25</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/mariana.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Mariana Costa</h4>
-	  							<p class="w-last-message">El panel de speakers esta buanazo</p>
-	  						</div>
-							<div class="time">09:25</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/anamaria.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Ana María Martinez Franklin</h4>
-	  							<p class="w-last-message">Pues dale chamo!</p>
-	  						</div>
-	  						<div class="time">Ayer</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar"> 
-	  							<img src="image/rodulfo.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Rodulfo Prieto</h4>
-	  							<p class="w-last-message">¿Cómo van las chicas?</p>
-	  						</div>
-	  						<div class="time">Martes</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/andrea.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Andrea Lamas</h4>
-	  							<p class="w-last-message">Hoy me toca clases de canto, yee!</p>
-	  						</div>
-	  						<div class="time">Lunes</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/mariapaula.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Maria Paula Rivarola</h4>
-	  							<p class="w-last-message">Wuju! esto me encanta!! en verdad!</p>
-	  						</div>
-	  						<div class="time">13/01/2016</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/katy.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Katy Sanchez</h4>
-	  							<p class="w-last-message">No te preocupes, tengo el salón bajo control</p>
-	  						</div>
-	  						<div class="time">11/01/2016</div>
-	  					</li>
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/aldo.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Aldo Alfaro</h4>
-	  							<p class="w-last-message">Vao a comer?</p>
-	  						</div>
-	  						<div class="time">03/01/2016</div>
-	  					</li>	 
-	  					<li>
-	  						<div class="avatar">
-	  							<img src="image/curricula.jpg" alt="" class="wh-44">
-	  							<h4 class="w-contact-name">Laboratoria Curricula</h4>
-	  							<p class="w-last-message">Gian: Ya está lista la unidad 2</p>
-	  						</div>
-	  						<div class="time">03/01/2016</div>
-	  					</li>	
 	  					<li>
 	  						<div class="avatar">
 	  							<img src="image/jose.jpg" alt="" class="wh-44">
@@ -150,86 +94,6 @@
 	  								<div class="time">11:12</div>
 	  							</div>
 	  						</div>
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="pink-1">Mariana Costa</h5>
-	  								<p>¿Finalmente se corto?</p>
-	  								<div class="time">11:13</div>
-	  							</div>
-	  						</div>
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="green-1">Maria Paula Rivarola</h5>
-	  								<p>Jajaja Sii finalmente se corto!!</p>
-	  								<div class="time">11:13</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-out">
-	  							<div class="w-message-text">
-	  								<p>Antes parecia mufasa jajajaja</p>
-	  								<div class="time">11:14</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-out">
-	  							<div class="w-message-text">
-	  								<p>Ahora si esta decente</p>
-	  								<div class="time">11:18</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="blue-1">Andrea Lamas</h5>
-	  								<p>¿Por qué se lo habrá cortado?</p>
-	  								<div class="time">11:20</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="yellow-1">Aldo Alfaro</h5>
-	  								<p>Ya ya ya, hacia mucho calor que más</p>
-	  								<div class="time">11:25</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="blue-1">Andrea Lamas</h5>
-	  								<p>Esta siguiendo los pasos de Juan Diego!</p>
-	  								<div class="time">11:30</div>
-	  							</div>
-	  						</div>
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="green-1">Maria Paula Rivarola</h5>
-	  								<p>Nunca!!! Juan Diego es único</p>
-	  								<div class="time">11:31</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-out">
-	  							<div class="w-message-text">
-	  								<p>Jajajaja</p>
-	  								<div class="time">11:32</div>
-	  							</div>
-	  						</div>
-
-	  						<div class="w-message w-message-in">
-	  							<div class="w-message-text">
-	  								<h5 class="yellow-1">Aldo Alfaro</h5>
-	  								<p>Dale dale!</p>
-	  								<div class="time">14:25</div>
-	  							</div>
-	  						</div>
-	  						<div class="w-message w-message-out">
-	  							<div class="w-message-text">
-	  								<p>Jajaja</p>
-	  								<div class="time">14:26</div>
-	  							</div>
-	  						</div>
 	  						<div class="w-message w-message-out">
 	  							<div class="w-message-text">
 	  								<p>No se pique!!</p>
@@ -252,8 +116,76 @@
 	  					</ul>
 	  				</footer>
 	  			</section>
+	  			
 	  		</div>
 	  	</div>
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		
+		<script src="http://services.geekadvice.pe:4000/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script>
+            var socket;
+            window.onload = function() {
+                socket=io.connect("http://services.geekadvice.pe:4000");
+                init();
+                
+                socket.on('list_users',function(_users){
+                    console.log(_users);
+                    drawUsers(_users);
+                });
+                
+                socket.on('new_user', function(_user){
+                    $("#lista-chats").append('<li>'+_user.name+'</li>');
+                })
+                
+                socket.on('new_message', function(_msg){
+                    console.log(_msg);
+                    crearMensaje(_msg.message,_msg.name)
+                })
+                
+                $("#btn-ingresar").click(identificar);
+            };
+            
+            function identificar(){
+                //para ejecutar el socket identify cuando ponga mi nombre
+                socket.emit('identify',$("#name").val());
+            }
+            
+            function drawUsers(_users){
+                var lista= $("#lista-chats");
+                for(var i in _users){
+                    lista.append('<li>'+_users[i].name+'</li>');
+                }
+            }
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	</body>
 </html>
